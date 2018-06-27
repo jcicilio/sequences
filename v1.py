@@ -37,7 +37,23 @@ def s(n):
     return r
 
 
+def a(n):
+    # generate values
+    for i in range(2, n+1):
+        # set to test
+        set = s(i)
+        for j in range(len(set)):
+            with open("/temp/test.out", "a") as myfile:
+                myfile.write(("\""+str(set[j])+"\" -> \""+str(generator(set[j],i,[]))+"\"\n").replace(" ",""))
+            print ("\""+str(set[j])+"\" -> \""+str(generator(set[j],i,[]))+"\"").replace(" ","")
+
+    return
+
+
 if __name__ == "__main__":
+
+    a(10)
+    print("-----------------")
 
     print s(3)
     print("-----------------")
