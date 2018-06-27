@@ -8,47 +8,55 @@ def k(ls):
     return v
 
 # calculate
-def generator(ls, max):
+def generator(ls, max, r):
     vNext = k(ls)
-    print vNext
+    r.append(vNext)
 
     if max==1:
-        return
+        return r
 
     # generate new list with vNext and last remainingg of list
-    generator(ls[1:] + [vNext], max-1)
+    generator(ls[1:] + [vNext], max-1, r)
 
-    return
-
-def genTop(ls, max):
-    print(ls)
-    generator(ls, max)
+    return r
 
 # take first, generate next, save
 
 # binary stream to true false array
 
+def s(n):
+    r = []
+    for k in range(2**n):
+        t = 2**(n-1)
+        v = []
+        for j in range(n):
+            v.append(bool(t & k))
+            t /=2
+        r.append(v)
+
+    return r
 
 
 if __name__ == "__main__":
 
-    genTop([False, False], 2)
+    print s(3)
     print("-----------------")
 
-    generator([False, False], 2)
+
+
+    print(generator([False, False], 2,[]))
     print("-----------------")
 
-    genTop([False, False], 8)
+
+
+    generator([False, False], 8,[])
     print("-----------------")
 
-    generator([False, False], 8)
-    print("-----------------")
-
-    generator([True, True], 8)
+    generator([True, True], 8,[])
 
     print("-----------------")
 
-    generator([True, False], 8)
+    generator([True, False], 8,[])
 
     print("-----------------")
 
